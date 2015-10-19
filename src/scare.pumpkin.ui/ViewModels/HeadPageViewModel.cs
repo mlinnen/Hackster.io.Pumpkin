@@ -22,7 +22,7 @@ namespace scare.pumpkin.ui.ViewModels
         private RightEyeViewModel _rightEye;
         private LeftEyeViewModel _leftEye;
         private NoseViewModel _nose;
-        private readonly AnimationService _animationService;
+        private readonly SimpleAnimation _animationService;
         private readonly IEventAggregator _events;
         private bool _visible;
         private ImageSource _image;
@@ -35,7 +35,7 @@ namespace scare.pumpkin.ui.ViewModels
             LeftEyeViewModel leftEye,
             NoseViewModel nose, 
             INavigationService navService,
-            AnimationService animation)
+            SimpleAnimation animation)
         {
             _events = events;
             _actionFacialCodingEventToken = _events.GetEvent<Events.ActionFacialCodingEvent>().Subscribe((args) =>
