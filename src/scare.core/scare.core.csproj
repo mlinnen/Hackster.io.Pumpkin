@@ -7,8 +7,8 @@
     <ProjectGuid>{5C3125CA-45A1-4B45-BF03-A7C746A22756}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>scare.core</RootNamespace>
-    <AssemblyName>scare.core</AssemblyName>
+    <RootNamespace>Scare.Core</RootNamespace>
+    <AssemblyName>Scare.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -119,8 +119,10 @@
     <Compile Include="Model\ActionFacialCoding.cs" />
     <Compile Include="Model\ActionFacialCodingEventArgs.cs" />
     <Compile Include="Model\ActionSound.cs" />
+    <Compile Include="Model\ActionTimerStop.cs" />
     <Compile Include="Model\ActionType.cs" />
     <Compile Include="Model\ActionUnit.cs" />
+    <Compile Include="Model\AnimationEventArgs.cs" />
     <Compile Include="Model\Direction.cs" />
     <Compile Include="Model\FacialActionCodingType.cs" />
     <Compile Include="Model\IntensityScoring.cs" />

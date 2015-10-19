@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Scare.Core.Model
 {
-    public enum ActionType
+    public class AnimationEventArgs
     {
-        FacialCoding=1,
-        Sound=2,
-        TimerStop=3,
+        public AnimationEventArgs(int id)
+        {
+            Id = id;
+        }
+        public int Id { get; set; }
+
     }
 }

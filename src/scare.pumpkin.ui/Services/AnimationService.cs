@@ -17,6 +17,8 @@ namespace scare.pumpkin.ui.Services
         private ActionCollection _actions;
         private IEventAggregator _events;
         private SubscriptionToken _timerEventToken = null;
+        private SubscriptionToken _animationEventToken = null;
+        private bool _animationRunning;
 
         public AnimationService(IEventAggregator events, SoundService sound,TimerService timer)
         {
@@ -28,6 +30,18 @@ namespace scare.pumpkin.ui.Services
             {
                 this.OnTimer(args);
             }, ThreadOption.UIThread);
+
+            _animationEventToken = _events.GetEvent<Events.AnimationEvent>().Subscribe((args) =>
+            {
+                this.OnAnimationEvent(args);
+            }, ThreadOption.UIThread);
+        }
+
+        private void OnAnimationEvent(AnimationEventArgs args)
+        {
+            if (args == null)
+                return;
+            StartAnimation(args.Id);
         }
 
         private void OnTimer(TimerEventArgs args)
@@ -45,6 +59,10 @@ namespace scare.pumpkin.ui.Services
                         var facial = ((ActionFacialCoding)action);
                         _events.GetEvent<Events.ActionFacialCodingEvent>().Publish(new ActionFacialCodingEventArgs(facial));
                         break;
+                    case ActionType.TimerStop:
+                        _timerService.Stop();
+                        _animationRunning = false;
+                        break;
                     default:
                         break;
                 }
@@ -53,6 +71,9 @@ namespace scare.pumpkin.ui.Services
 
         public void StartAnimation(int id)
         {
+            if (_animationRunning)
+                return;
+            _animationRunning = true;
             _actions.Actions.Clear();
             switch(id)
             {
@@ -94,6 +115,10 @@ namespace scare.pumpkin.ui.Services
                 FileName = "howling.wav"
             });
 
+            _actions.Actions.Add(new ActionTimerStop
+            {
+                Sequence = 35,
+            });
 
         }
 
@@ -104,6 +129,11 @@ namespace scare.pumpkin.ui.Services
             _actions.Actions.Add(Scared(7));
 
             _actions.Actions.Add(Netrual(15));
+
+            _actions.Actions.Add(new ActionTimerStop
+            {
+                Sequence = 20,
+            });
 
         }
 

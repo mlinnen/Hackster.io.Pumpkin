@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Scare.Core.Model
 {
-    public enum ActionType
+    public class ActionTimerStop:Action
     {
-        FacialCoding=1,
-        Sound=2,
-        TimerStop=3,
+        public ActionTimerStop()
+        {
+            ActionType = ActionType.TimerStop;
+        }
     }
 }

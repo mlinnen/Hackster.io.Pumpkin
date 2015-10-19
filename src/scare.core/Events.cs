@@ -13,5 +13,6 @@ namespace Scare.Core
         public class TimerEvent : PubSubEvent<TimerEventArgs> { }
         public class ActionFacialCodingEvent : PubSubEvent<ActionFacialCodingEventArgs> { }
         public class SoundEvent : PubSubEvent<SoundEventArgs> { }
+        public class AnimationEvent : PubSubEvent<AnimationEventArgs> { }
     }
 }
