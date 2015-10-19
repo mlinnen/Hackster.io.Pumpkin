@@ -38,7 +38,6 @@ namespace scare.pumpkin.ui.ViewModels
                 o.FacialActionCodingType == FacialActionCodingType.Wink ||
                 o.FacialActionCodingType == FacialActionCodingType.NeutralFace);
             bool visible = true;
-            int eyeLeftRight = 0, eyeUpDown = 0;
             foreach (var action in actions)
             {
                 switch (action.FacialActionCodingType)
@@ -52,6 +51,24 @@ namespace scare.pumpkin.ui.ViewModels
                             this.Angle = _defaultAngle - 15;
                         else
                             this.Angle = _defaultAngle + 15;
+                        break;
+                    case FacialActionCodingType.OuterBrowRaiser:
+                        this.Y = _defaultY - 15;
+                        break;
+                    case FacialActionCodingType.BrowLowerer:
+                        this.Y = _defaultY + 15;
+                        break;
+                    case FacialActionCodingType.InnerEyebrowLowerer:
+                        if (_right)
+                            this.Angle = _defaultAngle + 15;
+                        else
+                            this.Angle = _defaultAngle - 15;
+                        break;
+                    case FacialActionCodingType.EyebrowGatherer:
+                        if (_right)
+                            this.X = _defaultX + 20;
+                        else
+                            this.X = _defaultX - 20;
                         break;
                     case FacialActionCodingType.EntireFaceNotVisible:
                         visible = false;

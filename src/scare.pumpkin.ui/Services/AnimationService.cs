@@ -128,7 +128,7 @@ namespace scare.pumpkin.ui.Services
             });
             code.ActionUnits.Add(new ActionUnit
             {
-                FacialActionCodingType = FacialActionCodingType.InnerBrowRaiser,
+                FacialActionCodingType = FacialActionCodingType.BrowLowerer,
                 IntensistyScoring = IntensityScoring.Maximum
             });
             code.Sequence = sequence;
