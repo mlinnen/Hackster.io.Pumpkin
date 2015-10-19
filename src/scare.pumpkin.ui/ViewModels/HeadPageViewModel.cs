@@ -22,11 +22,11 @@ namespace scare.pumpkin.ui.ViewModels
         private RightEyeViewModel _rightEye;
         private LeftEyeViewModel _leftEye;
         private NoseViewModel _nose;
-        private AnimationService _animationService;
-        private ImageSource _image;
-        private SubscriptionToken _actionFacialCodingEventToken = null;
+        private readonly AnimationService _animationService;
         private readonly IEventAggregator _events;
         private bool _visible;
+        private ImageSource _image;
+        private SubscriptionToken _actionFacialCodingEventToken = null;
 
         public HeadPageViewModel(
             IEventAggregator events,

@@ -13,11 +13,6 @@ namespace scare.pumpkin.ui.ViewModels
     public class EyeViewModel : FaceComponentViewModel
     {
 
-        private MouthViewModel _mouth;
-        private RightEyeViewModel _rightEye;
-        private LeftEyeViewModel _leftEye;
-        private NoseViewModel _nose;
-
         public EyeViewModel(IEventAggregator aggregator):base(aggregator)
         {
 
