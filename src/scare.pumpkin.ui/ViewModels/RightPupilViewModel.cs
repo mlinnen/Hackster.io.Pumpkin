@@ -12,11 +12,9 @@ namespace scare.pumpkin.ui.ViewModels
         public RightPupilViewModel(IEventAggregator events):base(events)
         {
             _right = true;
-
-            this.Y = 40;
-            this.X = 50;
-
+            this._defaultY = 40;
+            this._defaultX = 50;
+            this.SetToDefaults();
         }
-
     }
 }

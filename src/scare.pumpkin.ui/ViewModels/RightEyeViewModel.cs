@@ -15,10 +15,11 @@ namespace scare.pumpkin.ui.ViewModels
 
         public RightEyeViewModel(IEventAggregator events, RightPupilViewModel pupil, RightBrowViewModel eyebrow) :base(events)
         {
-            this.ScaleY = 0.75;
-            this.ScaleX = 0.75;
-            this.Y = 40;
-            this.X = 50;
+            this._defaultScaleY = 0.75;
+            this._defaultScaleX = 0.75;
+            this._defaultY = 40;
+            this._defaultX = 50;
+            this.SetToDefaults();
 
             _pupil = pupil;
             _eyebrow = eyebrow;

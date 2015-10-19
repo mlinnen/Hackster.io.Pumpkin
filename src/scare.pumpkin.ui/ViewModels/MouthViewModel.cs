@@ -16,8 +16,10 @@ namespace scare.pumpkin.ui.ViewModels
     {
         public MouthViewModel(IEventAggregator aggregator):base(aggregator)
         {
-            this.ScaleX = 0.5;
-            this.ScaleY = 0.5;
+            this._defaultScaleX = 0.5;
+            this._defaultScaleY = 0.5;
+            SetToDefaults();
+
             this.Visible = false;
             Image = new BitmapImage(new Uri(@"ms-appx:///Assets/Mouth.png", UriKind.RelativeOrAbsolute));
         }
@@ -44,10 +46,7 @@ namespace scare.pumpkin.ui.ViewModels
                 switch(action.FacialActionCodingType)
                 {
                     case FacialActionCodingType.NeutralFace:
-                        this.ScaleX = 0.5;
-                        this.ScaleY = 0.5;
-                        this.AngleX = 0;
-                        this.AngleY = 0;
+                        SetToDefaults();
                         this.Visible = true;
                         break;
                     case FacialActionCodingType.EntireFaceNotVisible:

@@ -16,8 +16,10 @@ namespace scare.pumpkin.ui.core.ViewModels
     {
         private SubscriptionToken _actionFacialCodingEventToken = null;
         protected readonly IEventAggregator _events;
-        private int _angle;
+        private int _angle=0;
+        protected int _defaultAngle=0;
         private double _scaleX = 1, _scaleY = 1, _angleX = 0, _angleY = 0, _x=0, _y=0;
+        protected double _defaultScaleX = 1, _defaultScaleY = 1, _defaultAngleX = 0, _defaultAngleY = 0, _defaultX = 0, _defaultY = 0;
         private bool _visible;
         private ImageSource _image;
 
@@ -91,5 +93,15 @@ namespace scare.pumpkin.ui.core.ViewModels
 
         }
 
+        protected void SetToDefaults()
+        {
+            this.X = _defaultX;
+            this.Y = _defaultY;
+            this.ScaleX = _defaultScaleX;
+            this.ScaleY = _defaultScaleY;
+            this.AngleX = _defaultAngleX;
+            this.AngleY = _defaultAngleY;
+            this.Angle = _defaultAngle;
+        }
     }
 }

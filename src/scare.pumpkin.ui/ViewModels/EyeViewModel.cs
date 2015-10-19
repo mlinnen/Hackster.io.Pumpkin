@@ -34,6 +34,7 @@ namespace scare.pumpkin.ui.ViewModels
                 switch (action.FacialActionCodingType)
                 {
                     case FacialActionCodingType.NeutralFace:
+                        SetToDefaults();
                         this.Visible = true;
                         break;
                     case FacialActionCodingType.EntireFaceNotVisible:

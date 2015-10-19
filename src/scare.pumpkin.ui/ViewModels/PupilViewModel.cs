@@ -46,10 +46,7 @@ namespace scare.pumpkin.ui.ViewModels
                 switch (action.FacialActionCodingType)
                 {
                     case FacialActionCodingType.NeutralFace:
-                        this.ScaleX = 1;
-                        this.ScaleY = 1;
-                        this.AngleX = 0;
-                        this.AngleY = 0;
+                        SetToDefaults();
                         break;
                     case FacialActionCodingType.EntireFaceNotVisible:
                         visible = false;
@@ -84,48 +81,48 @@ namespace scare.pumpkin.ui.ViewModels
             }
             if (eyeUpDown==0 && eyeLeftRight ==0)
             {
-                X = 0;
-                Y = 0;
+                X = this._defaultX;
+                Y = this._defaultY;
             }
             else if (eyeUpDown > 0 && eyeLeftRight == 0)
             {
-                X = 0;
-                Y = 30;
+                X = this._defaultX;
+                Y = this._defaultY + 30;
             }
             else if (eyeUpDown < 0 && eyeLeftRight == 0)
             {
-                X = 0;
-                Y = -30;
+                X = this._defaultX;
+                Y = this._defaultY - 30;
             }
             else if (eyeUpDown== 0 && eyeLeftRight > 0)
             {
-                X = 30;
-                Y = 0;
+                X = this._defaultX + 30;
+                Y = this._defaultY;
             }
             else if (eyeUpDown == 0 && eyeLeftRight < 0)
             {
-                X = -30;
-                Y = 0;
+                X = this._defaultX -30;
+                Y = this._defaultY;
             }
             else if (eyeUpDown > 0 && eyeLeftRight > 0)
             {
-                X = 40;
-                Y = 30;
+                X = this._defaultX + 40;
+                Y = this._defaultY + 30;
             }
             else if (eyeUpDown > 0 && eyeLeftRight < 0)
             {
-                X = -40;
-                Y = 30;
+                X = this._defaultX -40;
+                Y = this._defaultY + 30;
             }
             else if (eyeUpDown < 0 && eyeLeftRight > 0)
             {
-                X = 20;
-                Y = -30;
+                X = this._defaultX + 20;
+                Y = this._defaultY  - 30;
             }
             else if (eyeUpDown < 0 && eyeLeftRight < 0)
             {
-                X = -20;
-                Y = -30;
+                X = this._defaultX -20;
+                Y = this._defaultY - 30;
             }
             this.Visible = visible;
         }

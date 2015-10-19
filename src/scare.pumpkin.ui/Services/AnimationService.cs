@@ -54,13 +54,21 @@ namespace scare.pumpkin.ui.Services
         public void StartAnimation(int id)
         {
             _actions.Actions.Clear();
-            LoadAnimation1();
+            switch(id)
+            {
+                case 1:
+                    LoadAnimation1();
+                    break;
+                default:
+                    LoadAnimationTest();
+                    break;
+            }
             _timerService.Start();
         }
 
         public void LoadAnimation1()
         {
-            //_actions.Actions.Add(Netrual(1));
+            _actions.Actions.Add(Netrual(1));
 
             _actions.Actions.Add(new ActionSound
             {
@@ -89,6 +97,16 @@ namespace scare.pumpkin.ui.Services
 
         }
 
+        public void LoadAnimationTest()
+        {
+            _actions.Actions.Add(Netrual(1));
+
+            _actions.Actions.Add(Scared(7));
+
+            _actions.Actions.Add(Netrual(15));
+
+        }
+
         private ActionFacialCoding Netrual(int sequence)
         {
             ActionFacialCoding code = new ActionFacialCoding();
@@ -108,19 +126,14 @@ namespace scare.pumpkin.ui.Services
                 FacialActionCodingType = FacialActionCodingType.JawDrop,
                 IntensistyScoring = IntensityScoring.Maximum
             });
-            code.Sequence = sequence;
-            return code;
-        }
-
-        private ActionFacialCoding ShowFace(int sequence)
-        {
-            ActionFacialCoding code = new ActionFacialCoding();
             code.ActionUnits.Add(new ActionUnit
             {
-                FacialActionCodingType = FacialActionCodingType.EntireFaceVisible
+                FacialActionCodingType = FacialActionCodingType.InnerBrowRaiser,
+                IntensistyScoring = IntensityScoring.Maximum
             });
             code.Sequence = sequence;
             return code;
         }
+
     }
 }

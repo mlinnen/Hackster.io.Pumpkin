@@ -91,7 +91,7 @@ namespace scare.pumpkin.ui.ViewModels
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
-            _animationService.StartAnimation(1);
+            _animationService.StartAnimation(0);
         }
 
         public DelegateCommand GoBackCommand { get; set; }

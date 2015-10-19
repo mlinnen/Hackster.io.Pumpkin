@@ -12,10 +12,14 @@ namespace scare.pumpkin.ui.ViewModels
     {
         public RightBrowViewModel(IEventAggregator events):base(events)
         {
-            this.ScaleX = 0.5;
-            this.ScaleY = 0.5;
-            this.Y = -40;
-            this.X = 60;
+            this._defaultScaleY = 0.5;
+            this._defaultScaleX = 0.5;
+            this._defaultY = -40;
+            this._defaultX = 60;
+            this._defaultAngle = -10;
+            this.SetToDefaults();
+
+            this._right = true;
 
             Image = new BitmapImage(new Uri(@"ms-appx:///Assets/BrowRight.png", UriKind.RelativeOrAbsolute));
 
