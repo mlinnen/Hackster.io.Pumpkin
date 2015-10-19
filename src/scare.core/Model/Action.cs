@@ -10,8 +10,6 @@ namespace Scare.Core.Model
     {
         public long Sequence { get; set; }
 
-        public string DeviceId { get; set; }
-
         public ActionType ActionType { get; set; }
 
     }
