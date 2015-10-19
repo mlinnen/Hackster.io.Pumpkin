@@ -37,38 +37,6 @@ namespace scare.pumpkin.ui.Services
             }, ThreadOption.UIThread);
         }
 
-        private void OnAnimationEvent(AnimationEventArgs args)
-        {
-            if (args == null)
-                return;
-            StartAnimation(args.Id);
-        }
-
-        private void OnTimer(TimerEventArgs args)
-        {
-            var actions = _actions.Actions.Where(q => q.Sequence == args.Sequence);
-            foreach(var action in actions)
-            {
-                switch(action.ActionType)
-                {
-                    case ActionType.Sound:
-                        var sound = ((ActionSound)action);
-                        _events.GetEvent<Events.SoundEvent>().Publish(new SoundEventArgs(sound.Channel, sound.FileName));
-                        break;
-                    case ActionType.FacialCoding:
-                        var facial = ((ActionFacialCoding)action);
-                        _events.GetEvent<Events.ActionFacialCodingEvent>().Publish(new ActionFacialCodingEventArgs(facial));
-                        break;
-                    case ActionType.TimerStop:
-                        _timerService.Stop();
-                        _animationRunning = false;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
         public void StartAnimation(int id)
         {
             if (_animationRunning)
@@ -135,6 +103,38 @@ namespace scare.pumpkin.ui.Services
                 Sequence = 20,
             });
 
+        }
+
+        private void OnAnimationEvent(AnimationEventArgs args)
+        {
+            if (args == null)
+                return;
+            StartAnimation(args.Id);
+        }
+
+        private void OnTimer(TimerEventArgs args)
+        {
+            var actions = _actions.Actions.Where(q => q.Sequence == args.Sequence);
+            foreach (var action in actions)
+            {
+                switch (action.ActionType)
+                {
+                    case ActionType.Sound:
+                        var sound = ((ActionSound)action);
+                        _events.GetEvent<Events.SoundEvent>().Publish(new SoundEventArgs(sound.Channel, sound.FileName));
+                        break;
+                    case ActionType.FacialCoding:
+                        var facial = ((ActionFacialCoding)action);
+                        _events.GetEvent<Events.ActionFacialCodingEvent>().Publish(new ActionFacialCodingEventArgs(facial));
+                        break;
+                    case ActionType.TimerStop:
+                        _timerService.Stop();
+                        _animationRunning = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private ActionFacialCoding Netrual(int sequence)
