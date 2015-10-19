@@ -1,0 +1,25 @@
+﻿<UserControl
+    x:Class="scare.pumpkin.ui.Views.LeftEyeView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:scare.pumpkin.ui.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="using:Prism.Windows.Mvvm"
+    >
+
+    <Grid>
+        <local:LeftEyeBrowView DataContext="{Binding Eyebrow}"/>
+        <Image x:Name="eye" Visibility="{Binding Path=Visible, Converter={StaticResource BooleanToVisibilityConverter}}" RenderTransformOrigin="0.5,0.5" Source="{Binding Image}">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="{Binding ScaleX}" ScaleY="{Binding ScaleY}"/>
+                    <RotateTransform Angle="{Binding Angle}" />
+                    <SkewTransform AngleX="{Binding AngleX}" AngleY="{Binding AngleY}"/>
+                    <TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <local:LeftPupilView DataContext="{Binding Pupil}"/>
+    </Grid>
+</UserControl>

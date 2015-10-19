@@ -1,0 +1,15 @@
+﻿<windows:PrismUnityApplication
+    x:Class="scare.pumpkin.ui.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:windows="using:Prism.Unity.Windows"
+    xmlns:local="using:scare.pumpkin.ui"
+    xmlns:converters="using:scrare.core.ui.Converters"
+    RequestedTheme="Dark">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></converters:BooleanToVisibilityConverter>
+        </ResourceDictionary>
+    </Application.Resources>
+</windows:PrismUnityApplication>
