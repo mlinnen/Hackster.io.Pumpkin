@@ -5,7 +5,7 @@ using Windows.ApplicationModel.Activation;
 using Microsoft.Practices.Unity;
 using scare.pumpkin.ui.ViewModels;
 using scrare.core.ui.ViewModels;
-using scare.core.Services;
+using Scare.Core.Services;
 using scare.pumpkin.ui.Services;
 
 namespace scare.pumpkin.ui
@@ -58,7 +58,7 @@ namespace scare.pumpkin.ui
         {
             base.OnLaunched(args);
             var service = Container.Resolve<MotionSensorService>();
-            service.Setup();
+            service.Setup(5,1);
         }
 
 

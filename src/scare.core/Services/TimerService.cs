@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace scare.core.Services
+namespace Scare.Core.Services
 {
     public class TimerService
     {

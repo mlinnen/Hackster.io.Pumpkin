@@ -101,7 +101,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AnimationService.cs" />
-    <Compile Include="Services\MotionSensorService.cs" />
     <Compile Include="ViewModels\EyeBrowViewModel.cs" />
     <Compile Include="ViewModels\EyeControlPageViewModel.cs" />
     <Compile Include="ViewModels\EyeViewModel.cs" />
@@ -241,7 +240,11 @@
       <Name>scrare.core.ui</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="WindowsIoT, Version=10.0.10240.0">
+      <Name>Windows IoT Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

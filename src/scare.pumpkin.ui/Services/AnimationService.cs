@@ -1,7 +1,7 @@
 ﻿using Prism.Events;
-using scare.core.Services;
 using Scare.Core;
 using Scare.Core.Model;
+using Scare.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

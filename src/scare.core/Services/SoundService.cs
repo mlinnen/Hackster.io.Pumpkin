@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Scare.Core.Model;
 
-namespace scare.core.Services
+namespace Scare.Core.Services
 {
     public class SoundService
     {
