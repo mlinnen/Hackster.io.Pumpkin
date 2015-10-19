@@ -51,6 +51,14 @@ namespace scare.pumpkin.ui
             RegisterTypeIfMissing(typeof(TimerService), typeof(TimerService), true);
 
             RegisterTypeIfMissing(typeof(AnimationService), typeof(AnimationService), true);
+            RegisterTypeIfMissing(typeof(MotionSensorService), typeof(MotionSensorService), true);
+        }
+
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        {
+            base.OnLaunched(args);
+            var service = Container.Resolve<MotionSensorService>();
+            service.Setup();
         }
 
 
