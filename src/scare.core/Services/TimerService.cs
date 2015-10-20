@@ -32,6 +32,7 @@ namespace Scare.Core.Services
 
         public void Start()
         {
+            __sequence = 0;
             _timer = new Timer(this.TimerCallback, null, TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(500));
         }
 

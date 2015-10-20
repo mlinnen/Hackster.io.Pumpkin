@@ -22,7 +22,7 @@ namespace scare.pumpkin.ui.ViewModels
         private RightEyeViewModel _rightEye;
         private LeftEyeViewModel _leftEye;
         private NoseViewModel _nose;
-        private readonly SimpleAnimation _animationService;
+        private readonly MotionActivatedSimpleAnimation _animationService;
         private readonly IEventAggregator _events;
         private bool _visible;
         private ImageSource _image;
@@ -35,7 +35,7 @@ namespace scare.pumpkin.ui.ViewModels
             LeftEyeViewModel leftEye,
             NoseViewModel nose, 
             INavigationService navService,
-            SimpleAnimation animation)
+            MotionActivatedSimpleAnimation animation)
         {
             _events = events;
             _actionFacialCodingEventToken = _events.GetEvent<Events.ActionFacialCodingEvent>().Subscribe((args) =>
@@ -91,7 +91,7 @@ namespace scare.pumpkin.ui.ViewModels
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
-            _animationService.StartAnimation(0);
+            //_animationService.StartAnimation(0);
         }
 
         public DelegateCommand GoBackCommand { get; set; }

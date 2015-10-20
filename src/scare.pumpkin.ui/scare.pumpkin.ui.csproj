@@ -100,7 +100,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\SimpleAnimation.cs" />
+    <Compile Include="Services\MotionActivatedSimpleAnimation.cs" />
     <Compile Include="ViewModels\EyeBrowViewModel.cs" />
     <Compile Include="ViewModels\EyeControlPageViewModel.cs" />
     <Compile Include="ViewModels\EyeViewModel.cs" />

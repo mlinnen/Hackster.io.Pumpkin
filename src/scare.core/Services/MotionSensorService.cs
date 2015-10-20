@@ -14,6 +14,7 @@ namespace Scare.Core.Services
     {
         private readonly IEventAggregator _events;
         private GpioController _gpio;
+        private GpioPin _gpioPin;
         private int _motionId;
 
         public MotionSensorService(IEventAggregator events)
@@ -26,9 +27,9 @@ namespace Scare.Core.Services
             _motionId = motionId;
             if (!ConnectGPIO())
                 return; // GPIO not available on this system
-            GpioPin gpioPin = _gpio.OpenPin(pin);
-            gpioPin.SetDriveMode(GpioPinDriveMode.InputPullUp);
-            gpioPin.ValueChanged += GpioPin_ValueChanged;
+            _gpioPin = _gpio.OpenPin(pin);
+            _gpioPin.SetDriveMode(GpioPinDriveMode.InputPullUp);
+            _gpioPin.ValueChanged += GpioPin_ValueChanged;
         }
 
         private bool ConnectGPIO()

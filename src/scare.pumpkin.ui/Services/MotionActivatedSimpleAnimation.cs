@@ -10,10 +10,22 @@ using System.Threading.Tasks;
 
 namespace scare.pumpkin.ui.Services
 {
-    public class SimpleAnimation:AnimationServiceBase
+    public class MotionActivatedSimpleAnimation:AnimationServiceBase
     {
-        public SimpleAnimation(IEventAggregator events, SoundService sound,TimerService timer):base(events,sound, timer)
+        private SubscriptionToken _motionEventToken = null;
+
+        public MotionActivatedSimpleAnimation(IEventAggregator events, SoundService sound,TimerService timer):base(events,sound, timer)
         {
+            _motionEventToken = _events.GetEvent<Events.MotionEvent>().Subscribe((args) =>
+            {
+                this.OnMotionEvent(args);
+            }, ThreadOption.UIThread);
+
+        }
+
+        private void OnMotionEvent(MotionTriggeredArgs args)
+        {
+            StartAnimation(args.Id);
         }
 
         public override void StartAnimation(int id)
@@ -36,7 +48,7 @@ namespace scare.pumpkin.ui.Services
 
         public void LoadAnimation1()
         {
-            _actions.Actions.Add(Netrual(1));
+            _actions.Actions.Add(Netrual(5));
 
             _actions.Actions.Add(new ActionSound
             {
@@ -45,10 +57,11 @@ namespace scare.pumpkin.ui.Services
                 FileName = "thunder_strike_1.mp3"
             });
 
-            _actions.Actions.Add(Scared(7));
+            _actions.Actions.Add(Scared(10));
 
-            _actions.Actions.Add(Netrual(15));
+            _actions.Actions.Add(Netrual(16));
 
+            _actions.Actions.Add(Angry(21));
             _actions.Actions.Add(new ActionSound
             {
                 Sequence = 20,
@@ -62,6 +75,7 @@ namespace scare.pumpkin.ui.Services
                 FileName = "howling.wav"
             });
 
+            _actions.Actions.Add(Hide(34));
             _actions.Actions.Add(new ActionTimerStop
             {
                 Sequence = 35,
@@ -112,5 +126,31 @@ namespace scare.pumpkin.ui.Services
             return code;
         }
 
+        private ActionFacialCoding Hide(int sequence)
+        {
+            ActionFacialCoding code = new ActionFacialCoding();
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.EntireFaceNotVisible
+            });
+            code.Sequence = sequence;
+            return code;
+        }
+
+        private ActionFacialCoding Angry(int sequence)
+        {
+            ActionFacialCoding code = new ActionFacialCoding();
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.EyebrowGatherer
+            });
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.InnerEyebrowLowerer
+            });
+            code.Sequence = sequence;
+            return code;
+
+        }
     }
 }

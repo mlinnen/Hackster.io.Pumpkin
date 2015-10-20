@@ -13,7 +13,7 @@ namespace Scare.Core.Services
         private SoundService _soundService;
         protected TimerService _timerService;
         protected ActionCollection _actions;
-        private IEventAggregator _events;
+        protected IEventAggregator _events;
         private SubscriptionToken _timerEventToken = null;
         private SubscriptionToken _animationEventToken = null;
         protected bool _animationRunning;

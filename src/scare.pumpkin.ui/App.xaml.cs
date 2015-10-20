@@ -50,7 +50,7 @@ namespace scare.pumpkin.ui
             RegisterTypeIfMissing(typeof(SoundService), typeof(SoundService), true);
             RegisterTypeIfMissing(typeof(TimerService), typeof(TimerService), true);
 
-            RegisterTypeIfMissing(typeof(SimpleAnimation), typeof(SimpleAnimation), true);
+            RegisterTypeIfMissing(typeof(MotionActivatedSimpleAnimation), typeof(MotionActivatedSimpleAnimation), true);
             RegisterTypeIfMissing(typeof(MotionSensorService), typeof(MotionSensorService), true);
         }
 

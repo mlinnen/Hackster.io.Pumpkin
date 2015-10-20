@@ -61,7 +61,7 @@
                 </StackPanel>-->
             </Grid>
 
-            <Rectangle Grid.Row="0" Grid.Column="1" StrokeThickness="1" Stroke="Wheat"></Rectangle>
+            <!--<Rectangle Grid.Row="0" Grid.Column="1" StrokeThickness="1" Stroke="Wheat"></Rectangle>
             <Rectangle Grid.Row="0" Grid.Column="2" StrokeThickness="1" Stroke="Wheat"></Rectangle>
             <Rectangle Grid.Row="0" Grid.Column="3" StrokeThickness="1" Stroke="Wheat"></Rectangle>
             <Rectangle Grid.Row="1" Grid.Column="1" StrokeThickness="1" Stroke="Wheat"></Rectangle>
@@ -76,7 +76,7 @@
 
             <Rectangle Grid.Row="4" Grid.Column="1" StrokeThickness="1" Stroke="Wheat"></Rectangle>
             <Rectangle Grid.Row="4" Grid.Column="2" StrokeThickness="1" Stroke="Wheat"></Rectangle>
-            <Rectangle Grid.Row="4" Grid.Column="3" StrokeThickness="1" Stroke="Wheat"></Rectangle>
+            <Rectangle Grid.Row="4" Grid.Column="3" StrokeThickness="1" Stroke="Wheat"></Rectangle>-->
         </Grid>
     </Grid>
 </Page>
