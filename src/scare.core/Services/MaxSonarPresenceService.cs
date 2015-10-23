@@ -50,7 +50,7 @@ namespace Scare.Core.Services
         {
             Stop();
             double inches = await _rangeDriver.Read();
-            if (inches < _threshold)
+            if (inches < _threshold & inches!=0)
             {
                 _events.GetEvent<Events.PressenceEvent>().Publish(new PressenceTriggeredArgs(_animationId));
             }

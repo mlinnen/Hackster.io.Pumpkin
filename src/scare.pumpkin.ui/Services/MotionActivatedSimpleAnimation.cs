@@ -68,6 +68,7 @@ namespace scare.pumpkin.ui.Services
                 Channel = 2,
                 FileName = "dog_howling_at_moon.mp3"
             });
+
             _actions.Actions.Add(new ActionSound
             {
                 Sequence = 25,
@@ -75,10 +76,16 @@ namespace scare.pumpkin.ui.Services
                 FileName = "howling.wav"
             });
 
-            _actions.Actions.Add(Hide(34));
+            _actions.Actions.Add(LookLeft(27));
+
+            _actions.Actions.Add(LookRight(36));
+
+            _actions.Actions.Add(Netrual(40));
+
+            _actions.Actions.Add(Hide(49));
             _actions.Actions.Add(new ActionTimerStop
             {
-                Sequence = 35,
+                Sequence = 50,
             });
 
         }
@@ -104,6 +111,39 @@ namespace scare.pumpkin.ui.Services
             code.ActionUnits.Add(new ActionUnit
             {
                 FacialActionCodingType = FacialActionCodingType.NeutralFace
+            });
+            code.Sequence = sequence;
+            return code;
+        }
+        private ActionFacialCoding LookLeft(int sequence)
+        {
+            ActionFacialCoding code = new ActionFacialCoding();
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.EyesTurnLeft,
+                IntensistyScoring = IntensityScoring.Maximum
+            });
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.BrowLowerer,
+                IntensistyScoring = IntensityScoring.Maximum
+            });
+            code.Sequence = sequence;
+            return code;
+        }
+
+        private ActionFacialCoding LookRight(int sequence)
+        {
+            ActionFacialCoding code = new ActionFacialCoding();
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.EyesTurnRight,
+                IntensistyScoring = IntensityScoring.Maximum
+            });
+            code.ActionUnits.Add(new ActionUnit
+            {
+                FacialActionCodingType = FacialActionCodingType.BrowLowerer,
+                IntensistyScoring = IntensityScoring.Maximum
             });
             code.Sequence = sequence;
             return code;
