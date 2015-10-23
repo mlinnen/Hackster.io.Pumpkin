@@ -49,10 +49,10 @@ namespace Scare.Core.Driver
             _total = _total + _sensorReadings[_index];
             _index++;
             _totalReadings++;
-            if (_index >= 10)
+            if (_index >= _sensorReadings.Length)
                 _index = 0;
-            if (_totalReadings >= 10)
-                _totalReadings = 10;
+            if (_totalReadings >= _sensorReadings.Length)
+                _totalReadings = _sensorReadings.Length;
             returnValue = _total / _totalReadings;
             return returnValue;
         }

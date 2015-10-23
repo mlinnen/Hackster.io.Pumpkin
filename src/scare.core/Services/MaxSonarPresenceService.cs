@@ -19,6 +19,7 @@ namespace Scare.Core.Services
         private double _threshold = double.MaxValue;
         private Timer _timer = null;
         private int _pollMilliseconds = 250;
+        private double _lastReading;
 
         public MaxSonarPresenceService(IEventAggregator events,MaxSonarRangeDriver rangeDriver)
         {
@@ -53,6 +54,11 @@ namespace Scare.Core.Services
             if (inches < _threshold & inches!=0)
             {
                 _events.GetEvent<Events.PressenceEvent>().Publish(new PressenceTriggeredArgs(_animationId));
+            }
+            if (_lastReading!=inches)
+            {
+                _events.GetEvent<Events.RangeSensorEvent>().Publish(new RangeSensorEventArg(inches,_lastReading));
+                _lastReading = inches;
             }
             Start(_threshold, _animationId);
         }

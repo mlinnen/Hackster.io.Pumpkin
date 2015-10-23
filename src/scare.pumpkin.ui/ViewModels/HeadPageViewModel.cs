@@ -27,6 +27,8 @@ namespace scare.pumpkin.ui.ViewModels
         private bool _visible;
         private ImageSource _image;
         private SubscriptionToken _actionFacialCodingEventToken = null;
+        private SubscriptionToken _sensorChangedEventToken = null;
+        private double _currentReading;
 
         public HeadPageViewModel(
             IEventAggregator events,
@@ -41,6 +43,11 @@ namespace scare.pumpkin.ui.ViewModels
             _actionFacialCodingEventToken = _events.GetEvent<Events.ActionFacialCodingEvent>().Subscribe((args) =>
             {
                 this.OnActionFacialCodingCommand(args);
+            }, ThreadOption.UIThread);
+
+            _sensorChangedEventToken = _events.GetEvent<Events.RangeSensorEvent>().Subscribe((args) =>
+            {
+                this.OnRangeSensorChanged(args);
             }, ThreadOption.UIThread);
 
 
@@ -61,31 +68,6 @@ namespace scare.pumpkin.ui.ViewModels
         {
             get { return _visible; }
             set { SetProperty<bool>(ref _visible, value, "Visible"); }
-        }
-
-        private void OnActionFacialCodingCommand(ActionFacialCodingEventArgs args)
-        {
-            // Guard against null objects
-            if (args == null || args.Coding == null)
-                return;
-            // Look for specific actions that the head will react to
-            var actions = args.Coding.ActionUnits.Where(o =>
-                o.FacialActionCodingType == FacialActionCodingType.EntireFaceNotVisible ||
-                o.FacialActionCodingType == FacialActionCodingType.NeutralFace);
-            bool visible = true;
-            foreach (var action in actions)
-            {
-                switch (action.FacialActionCodingType)
-                {
-                    case FacialActionCodingType.NeutralFace:
-                        this.Visible = true;
-                        break;
-                    case FacialActionCodingType.EntireFaceNotVisible:
-                        visible = false;
-                        break;
-                }
-            }
-            this.Visible = visible;
         }
 
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
@@ -132,6 +114,13 @@ namespace scare.pumpkin.ui.ViewModels
             set { SetProperty<ImageSource>(ref _image, value, "Image"); }
         }
 
+        public double CurrentReading
+        {
+            get { return _currentReading; }
+            set { SetProperty<double>(ref _currentReading, value, "CurrentReading"); }
+
+        }
+
         private bool _isNavigationDisabled;
 
         public bool IsNavigationDisabled
@@ -146,6 +135,37 @@ namespace scare.pumpkin.ui.ViewModels
 
             base.OnNavigatingFrom(e, viewModelState, suspending);
         }
+
+        private void OnActionFacialCodingCommand(ActionFacialCodingEventArgs args)
+        {
+            // Guard against null objects
+            if (args == null || args.Coding == null)
+                return;
+            // Look for specific actions that the head will react to
+            var actions = args.Coding.ActionUnits.Where(o =>
+                o.FacialActionCodingType == FacialActionCodingType.EntireFaceNotVisible ||
+                o.FacialActionCodingType == FacialActionCodingType.NeutralFace);
+            bool visible = true;
+            foreach (var action in actions)
+            {
+                switch (action.FacialActionCodingType)
+                {
+                    case FacialActionCodingType.NeutralFace:
+                        this.Visible = true;
+                        break;
+                    case FacialActionCodingType.EntireFaceNotVisible:
+                        visible = false;
+                        break;
+                }
+            }
+            this.Visible = visible;
+        }
+
+        private void OnRangeSensorChanged(RangeSensorEventArg args)
+        {
+            CurrentReading = args.NewValue;
+        }
+
 
     }
 }

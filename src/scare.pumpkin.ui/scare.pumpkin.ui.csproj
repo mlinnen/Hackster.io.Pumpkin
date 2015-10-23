@@ -102,20 +102,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MotionActivatedSimpleAnimation.cs" />
     <Compile Include="ViewModels\EyeBrowViewModel.cs" />
-    <Compile Include="ViewModels\EyeControlPageViewModel.cs" />
     <Compile Include="ViewModels\EyeViewModel.cs" />
-    <Compile Include="ViewModels\ControlPageViewModel.cs" />
     <Compile Include="ViewModels\HeadPageViewModel.cs" />
     <Compile Include="ViewModels\LeftBrowViewModel.cs" />
     <Compile Include="ViewModels\LeftEyeViewModel.cs" />
     <Compile Include="ViewModels\LeftPupilViewModel.cs" />
-    <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\MouthViewModel.cs" />
     <Compile Include="ViewModels\NoseViewModel.cs" />
     <Compile Include="ViewModels\PupilViewModel.cs" />
     <Compile Include="ViewModels\RightBrowViewModel.cs" />
     <Compile Include="ViewModels\RightEyeViewModel.cs" />
     <Compile Include="ViewModels\RightPupilViewModel.cs" />
+    <Compile Include="ViewModels\SensorReadingPageViewModel.cs" />
+    <Compile Include="Views\SensorReadingPage.xaml.cs">
+      <DependentUpon>SensorReadingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LeftEyeBrowView.xaml.cs">
       <DependentUpon>LeftEyeBrowView.xaml</DependentUpon>
     </Compile>
@@ -124,9 +125,6 @@
     </Compile>
     <Compile Include="Views\LeftPupilView.xaml.cs">
       <DependentUpon>LeftPupilView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeadPage.xaml.cs">
       <DependentUpon>HeadPage.xaml</DependentUpon>
@@ -175,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\SensorReadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\LeftEyeBrowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -186,10 +188,6 @@
     <Page Include="Views\LeftPupilView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HeadPage.xaml">
       <Generator>MSBuild:Compile</Generator>

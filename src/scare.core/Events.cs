@@ -15,5 +15,6 @@ namespace Scare.Core
         public class SoundEvent : PubSubEvent<SoundEventArgs> { }
         public class AnimationEvent : PubSubEvent<AnimationEventArgs> { }
         public class PressenceEvent : PubSubEvent<PressenceTriggeredArgs> { }
+        public class RangeSensorEvent : PubSubEvent<RangeSensorEventArg> { }
     }
 }

@@ -130,6 +130,7 @@
     <Compile Include="Model\FacialActionCodingType.cs" />
     <Compile Include="Model\IntensityScoring.cs" />
     <Compile Include="Model\PressenceTriggeredArgs.cs" />
+    <Compile Include="Model\RangeSensorEventArg.cs" />
     <Compile Include="Model\SoundEventArgs.cs" />
     <Compile Include="Model\TimerEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,7 +4,6 @@ using Prism.Unity.Windows;
 using Windows.ApplicationModel.Activation;
 using Microsoft.Practices.Unity;
 using scare.pumpkin.ui.ViewModels;
-using scrare.core.ui.ViewModels;
 using Scare.Core.Services;
 using scare.pumpkin.ui.Services;
 using Scare.Core.Driver;
@@ -28,6 +27,7 @@ namespace scare.pumpkin.ui
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
             NavigationService.Navigate("Head", null);
+            //NavigationService.Navigate("SensorReading", null);
             return Task.FromResult<object>(null);
 
         }
@@ -46,7 +46,7 @@ namespace scare.pumpkin.ui
             RegisterTypeIfMissing(typeof(LeftBrowViewModel), typeof(LeftBrowViewModel), true);
             RegisterTypeIfMissing(typeof(NoseViewModel), typeof(NoseViewModel), true);
             RegisterTypeIfMissing(typeof(HeadPageViewModel), typeof(HeadPageViewModel), true);
-            RegisterTypeIfMissing(typeof(EyeControlPageViewModel), typeof(EyeControlPageViewModel), true);
+            RegisterTypeIfMissing(typeof(SensorReadingPageViewModel), typeof(SensorReadingPageViewModel), true);
 
             Mcp3008 driver = new Mcp3008(0);
             MaxSonarRangeDriver sonarDriver = new MaxSonarRangeDriver(driver,0);
@@ -69,7 +69,7 @@ namespace scare.pumpkin.ui
         private void SetupHardware()
         {
             var service = Container.Resolve<MaxSonarPresenceService>();
-            service.Start(60,1);
+            service.Start(80,1);
         }
 
 

@@ -18,12 +18,12 @@ namespace scare.pumpkin.ui.Services
         {
             _motionEventToken = _events.GetEvent<Events.PressenceEvent>().Subscribe((args) =>
             {
-                this.OnMotionEvent(args);
+                this.OnPresenceEvent(args);
             }, ThreadOption.UIThread);
 
         }
 
-        private void OnMotionEvent(PressenceTriggeredArgs args)
+        private void OnPresenceEvent(PressenceTriggeredArgs args)
         {
             StartAnimation(args.Id);
         }
@@ -38,6 +38,9 @@ namespace scare.pumpkin.ui.Services
             {
                 case 1:
                     LoadAnimation1();
+                    break;
+                case 2:
+                    AnimationNoSound();
                     break;
                 default:
                     LoadAnimationTest();
@@ -61,13 +64,14 @@ namespace scare.pumpkin.ui.Services
 
             _actions.Actions.Add(Netrual(16));
 
-            _actions.Actions.Add(Angry(21));
             _actions.Actions.Add(new ActionSound
             {
                 Sequence = 20,
                 Channel = 2,
                 FileName = "dog_howling_at_moon.mp3"
             });
+
+            _actions.Actions.Add(Angry(21));
 
             _actions.Actions.Add(new ActionSound
             {
@@ -83,9 +87,35 @@ namespace scare.pumpkin.ui.Services
             _actions.Actions.Add(Netrual(40));
 
             _actions.Actions.Add(Hide(49));
+
             _actions.Actions.Add(new ActionTimerStop
             {
-                Sequence = 50,
+                Sequence = 60,
+            });
+
+        }
+
+        public void AnimationNoSound()
+        {
+            _actions.Actions.Add(Netrual(5));
+
+            _actions.Actions.Add(Scared(10));
+
+            _actions.Actions.Add(Netrual(16));
+
+            _actions.Actions.Add(Angry(21));
+
+            _actions.Actions.Add(LookLeft(27));
+
+            _actions.Actions.Add(LookRight(36));
+
+            _actions.Actions.Add(Netrual(40));
+
+            _actions.Actions.Add(Hide(49));
+
+            _actions.Actions.Add(new ActionTimerStop
+            {
+                Sequence = 60,
             });
 
         }
@@ -115,6 +145,7 @@ namespace scare.pumpkin.ui.Services
             code.Sequence = sequence;
             return code;
         }
+
         private ActionFacialCoding LookLeft(int sequence)
         {
             ActionFacialCoding code = new ActionFacialCoding();
