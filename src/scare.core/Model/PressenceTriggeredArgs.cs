@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Scare.Core.Model
 {
-    public class MotionTriggeredArgs
+    public class PressenceTriggeredArgs
     {
-        public MotionTriggeredArgs(int id)
+        public PressenceTriggeredArgs(int id)
         {
             Id = id;
         }

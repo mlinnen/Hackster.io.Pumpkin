@@ -116,12 +116,6 @@
     <Compile Include="ViewModels\RightBrowViewModel.cs" />
     <Compile Include="ViewModels\RightEyeViewModel.cs" />
     <Compile Include="ViewModels\RightPupilViewModel.cs" />
-    <Compile Include="Views\ControlPage.xaml.cs">
-      <DependentUpon>ControlPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EyeControlPage.xaml.cs">
-      <DependentUpon>EyeControlPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\LeftEyeBrowView.xaml.cs">
       <DependentUpon>LeftEyeBrowView.xaml</DependentUpon>
     </Compile>
@@ -181,14 +175,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\ControlPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\EyeControlPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\LeftEyeBrowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -7,6 +7,7 @@ using scare.pumpkin.ui.ViewModels;
 using scrare.core.ui.ViewModels;
 using Scare.Core.Services;
 using scare.pumpkin.ui.Services;
+using Scare.Core.Driver;
 
 namespace scare.pumpkin.ui
 {
@@ -47,18 +48,28 @@ namespace scare.pumpkin.ui
             RegisterTypeIfMissing(typeof(HeadPageViewModel), typeof(HeadPageViewModel), true);
             RegisterTypeIfMissing(typeof(EyeControlPageViewModel), typeof(EyeControlPageViewModel), true);
 
+            Mcp3008 driver = new Mcp3008(0);
+            MaxSonarRangeDriver sonarDriver = new MaxSonarRangeDriver(driver,0);
+            Container.RegisterInstance<Mcp3008>(driver);
+            Container.RegisterInstance<MaxSonarRangeDriver>(sonarDriver);
             RegisterTypeIfMissing(typeof(SoundService), typeof(SoundService), true);
             RegisterTypeIfMissing(typeof(TimerService), typeof(TimerService), true);
+            RegisterTypeIfMissing(typeof(MaxSonarPresenceService), typeof(MaxSonarPresenceService), true);
+            RegisterTypeIfMissing(typeof(MaxSonarRangeDriver), typeof(MaxSonarRangeDriver), true);
 
             RegisterTypeIfMissing(typeof(MotionActivatedSimpleAnimation), typeof(MotionActivatedSimpleAnimation), true);
-            RegisterTypeIfMissing(typeof(MotionSensorService), typeof(MotionSensorService), true);
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             base.OnLaunched(args);
-            var service = Container.Resolve<MotionSensorService>();
-            service.Setup(5,1);
+            SetupHardware();
+        }
+
+        private void SetupHardware()
+        {
+            var service = Container.Resolve<MaxSonarPresenceService>();
+            service.Start(60,1);
         }
 
 

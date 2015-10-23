@@ -16,14 +16,14 @@ namespace scare.pumpkin.ui.Services
 
         public MotionActivatedSimpleAnimation(IEventAggregator events, SoundService sound,TimerService timer):base(events,sound, timer)
         {
-            _motionEventToken = _events.GetEvent<Events.MotionEvent>().Subscribe((args) =>
+            _motionEventToken = _events.GetEvent<Events.PressenceEvent>().Subscribe((args) =>
             {
                 this.OnMotionEvent(args);
             }, ThreadOption.UIThread);
 
         }
 
-        private void OnMotionEvent(MotionTriggeredArgs args)
+        private void OnMotionEvent(PressenceTriggeredArgs args)
         {
             StartAnimation(args.Id);
         }
