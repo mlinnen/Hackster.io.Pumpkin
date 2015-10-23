@@ -29,6 +29,7 @@ namespace scare.pumpkin.ui.ViewModels
         private SubscriptionToken _actionFacialCodingEventToken = null;
         private SubscriptionToken _sensorChangedEventToken = null;
         private double _currentReading;
+        private bool _showSensorReading=false;
 
         public HeadPageViewModel(
             IEventAggregator events,
@@ -54,6 +55,7 @@ namespace scare.pumpkin.ui.ViewModels
             _navService = navService;
             GoBackCommand = new DelegateCommand(_navService.GoBack);
             NavigateControlCommand = new DelegateCommand(() => navService.Navigate("Control", null));
+            HideCommand = new DelegateCommand(this.Hide);
 
             _mouth = mouth;
             _rightEye = rightEye;
@@ -62,6 +64,22 @@ namespace scare.pumpkin.ui.ViewModels
             _animationService = animation;
             Image = new BitmapImage(new Uri(@"ms-appx:///Assets/pumpkinbackground.png", UriKind.RelativeOrAbsolute));
 
+        }
+
+        private void Hide()
+        {
+            ShowSensorReading = !ShowSensorReading;
+        }
+
+        private bool CanHide(object arg)
+        {
+            return true;
+        }
+
+        public bool ShowSensorReading
+        {
+            get { return _showSensorReading; }
+            set { SetProperty<bool>(ref _showSensorReading, value, "ShowSensorReading"); }
         }
 
         public bool Visible
@@ -77,6 +95,8 @@ namespace scare.pumpkin.ui.ViewModels
         }
 
         public DelegateCommand GoBackCommand { get; set; }
+
+        public DelegateCommand HideCommand { get; set; }
 
         public DelegateCommand NavigateControlCommand { get; set; }
 
